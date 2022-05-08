@@ -2,8 +2,9 @@
 {
     public class Coordinance
     {
-        public int x_axis { get; set; }
-        public int y_axis { get; set; }
+        public float x_axis { get; set; }
+        public float y_axis { get; set; }
         public float theta { get; set; }
+
     }
 }
