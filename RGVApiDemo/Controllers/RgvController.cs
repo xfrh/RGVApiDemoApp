@@ -24,35 +24,35 @@ namespace RGVApiDemo.Controllers
             return "value";
         }
 
-        [HttpGet("/reeman")]
+        [HttpGet("/reeman/global_plan")]
         public string Global_Plan()
         {
             Coordinance coordinance = new Coordinance() { x_axis = 1119.76f, y_axis = 987.56f, theta = 1234.89f };
             return JsonConvert.SerializeObject(coordinance);
         }
 
-        [HttpGet("/reeman")]
+        [HttpGet("/reeman/lcoal_plan")]
         public string Local_Plan()
         {
             Coordinance coordinance = new Coordinance() { x_axis = 4324.09f, y_axis = 353.89f, theta = 7655.4f };
             return JsonConvert.SerializeObject(coordinance);
         }
 
-        [HttpGet("/reeman")]
+        [HttpGet("/reeman/pose")]
         public string Pose()
         {
             Coordinance coordinance = new Coordinance() { x_axis = 297f, y_axis = 251f, theta = 0.97f };
             return JsonConvert.SerializeObject(coordinance);
         }
 
-        [HttpGet("/reeman")]
+        [HttpGet("/reeman/movebase_status")]
         public string MoveBase_Status()
         {
             Status status = new Status() { status=0 };
             return JsonConvert.SerializeObject(status);
         }
 
-        [HttpGet("/reeman")]
+        [HttpGet("/reeman/base_encode")]
         public string Base_Encode()
         {
             Battery battery = new Battery() { battery=100, chargeFlag=1,emergencyButton=0 };
@@ -66,7 +66,7 @@ namespace RGVApiDemo.Controllers
             
         }
 
-        [HttpPost("/cmd")]
+        [HttpPost("/cmd/nav")]
         public void Nav([FromBody] string value)
         {
             try
@@ -90,13 +90,13 @@ namespace RGVApiDemo.Controllers
           
         }
 
-        [HttpPost("/cmd")]
+        [HttpPost("/cmd/cancel_goal")]
         public void Cancel_Goal()
         {
 
         }
 
-        [HttpPost("/cmd")]
+        [HttpPost("/cmd/charge")]
         public void Charge([FromBody] string value)
         {
             try
@@ -119,7 +119,7 @@ namespace RGVApiDemo.Controllers
             }
         }
 
-        [HttpPost("/cmd")]
+        [HttpPost("/cmd/nav_point")]
         public void Nav_Point([FromBody] string value)
         {
             try
@@ -143,7 +143,7 @@ namespace RGVApiDemo.Controllers
         }
 
 
-        [HttpPost("/cmd")]
+        [HttpPost("/cmd/speed")]
         public void Speed([FromBody] string value)
         {
 
@@ -172,33 +172,12 @@ namespace RGVApiDemo.Controllers
             }
         }
 
-        [HttpPost("/cmd")]
-        public  void Lock([FromBody] string value)
-        {
-            Task.Run(() => Power(value, "lock"));
-        }
-
-        [HttpPost("/cmd")]
-        public void unLock([FromBody] string value)
-        {
-            Task.Run(() => Power(value, "unlock"));
-        }
-
         // DELETE api/<RgvController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
         }
 
-        public async Task Power(string uri,string isLock)
-        {
-            using (var client = new HttpClient())
-            {
-                 client.BaseAddress = new Uri(uri);
-                 var result = await client.PostAsync($"/cmd/{isLock}",null);
-                string resultContent = await result.Content.ReadAsStringAsync();
-                Console.WriteLine(resultContent);
-            }
-        }
+       
     }
 }
