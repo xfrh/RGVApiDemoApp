@@ -39,7 +39,7 @@ namespace RGVApiDemo.Controllers
             return JsonConvert.SerializeObject(lst);
         }
 
-        [HttpGet("/reeman/lcoal_plan")]
+        [HttpGet("/reeman/local_plan")]
         public string Local_Plan()
         {
             List<Coordinance> lst = new List<Coordinance>();
