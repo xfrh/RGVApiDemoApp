@@ -27,15 +27,31 @@ namespace RGVApiDemo.Controllers
         [HttpGet("/reeman/global_plan")]
         public string Global_Plan()
         {
-            Coordinance coordinance = new Coordinance() { x_axis = 1119.76f, y_axis = 987.56f, theta = 1234.89f };
-            return JsonConvert.SerializeObject(coordinance);
+            List<Coordinance> lst = new List<Coordinance>();
+            Coordinance coordinance1 = new Coordinance() { x_axis = 1119.76f, y_axis = 987.56f, theta = 1234.89f };
+            Coordinance coordinance2 = new Coordinance() { x_axis = 493.5f, y_axis = 97.56f, theta = 34.89f };
+            Coordinance coordinance3 = new Coordinance() { x_axis = 112.4f, y_axis = 93423.4f, theta = 3434.54f };
+            Coordinance coordinance4 = new Coordinance() { x_axis = 534.54f, y_axis = 0.987f, theta = 543.98f };
+            lst.Add(coordinance1);
+            lst.Add(coordinance2);
+            lst.Add(coordinance3);
+            lst.Add(coordinance4);
+            return JsonConvert.SerializeObject(lst);
         }
 
         [HttpGet("/reeman/lcoal_plan")]
         public string Local_Plan()
         {
-            Coordinance coordinance = new Coordinance() { x_axis = 4324.09f, y_axis = 353.89f, theta = 7655.4f };
-            return JsonConvert.SerializeObject(coordinance);
+            List<Coordinance> lst = new List<Coordinance>();
+            Coordinance coordinance1 = new Coordinance() { x_axis = 1119.76f, y_axis = 987.56f, theta = 1234.89f };
+            Coordinance coordinance2 = new Coordinance() { x_axis = 493.5f, y_axis = 97.56f, theta = 34.89f };
+            Coordinance coordinance3 = new Coordinance() { x_axis = 112.4f, y_axis = 93423.4f, theta = 3434.54f };
+            Coordinance coordinance4 = new Coordinance() { x_axis = 534.54f, y_axis = 0.987f, theta = 543.98f };
+            lst.Add(coordinance1);
+            lst.Add(coordinance2);
+            lst.Add(coordinance3);
+            lst.Add(coordinance4);
+            return JsonConvert.SerializeObject(lst);
         }
 
         [HttpGet("/reeman/pose")]
